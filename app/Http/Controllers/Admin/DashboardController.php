@@ -157,6 +157,7 @@ class DashboardController extends Controller
             'nama_paket' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'harga' => 'required|numeric|min:0',
+            'harga_diskon' => 'nullable|numeric|min:0',
             'periode' => 'required|string|max:255',
             'fitur' => 'required|array',
             'is_populer' => 'boolean',
@@ -164,6 +165,8 @@ class DashboardController extends Controller
             'cta_link' => 'nullable|string|max:500',
             'urutan' => 'integer|min:0',
         ]);
+
+        $validated['harga_diskon'] = $request->filled('harga_diskon') ? $validated['harga_diskon'] : null;
 
         PricingPackage::create($validated);
 
@@ -178,6 +181,7 @@ class DashboardController extends Controller
             'nama_paket' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'harga' => 'required|numeric|min:0',
+            'harga_diskon' => 'nullable|numeric|min:0',
             'periode' => 'required|string|max:255',
             'fitur' => 'required|array',
             'is_populer' => 'boolean',
@@ -185,6 +189,8 @@ class DashboardController extends Controller
             'cta_link' => 'nullable|string|max:500',
             'urutan' => 'integer|min:0',
         ]);
+
+        $validated['harga_diskon'] = $request->filled('harga_diskon') ? $validated['harga_diskon'] : null;
 
         $package->update($validated);
 

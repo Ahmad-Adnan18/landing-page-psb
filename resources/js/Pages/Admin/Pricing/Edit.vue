@@ -17,6 +17,7 @@ const props = defineProps({
 const form = useForm({
     nama_paket: props.package.nama_paket,
     harga: props.package.harga,
+    harga_diskon: props.package.harga_diskon,
     periode: props.package.periode,
     deskripsi: props.package.deskripsi,
     fitur: props.package.fitur || [''],
@@ -27,7 +28,14 @@ const form = useForm({
     urutan: props.package.urutan,
 })
 
+const normalizeDiscount = () => {
+    if (form.harga_diskon === '' || form.harga_diskon === undefined) {
+        form.harga_diskon = null
+    }
+}
+
 const submit = () => {
+    normalizeDiscount()
     form.put(route('admin.pricing.update', props.package.id))
 }
 
@@ -73,10 +81,20 @@ const removeFitur = (index) => {
                                     <label for="harga" class="block text-sm font-medium text-gray-700 mb-1">
                                         Harga *
                                     </label>
-                                    <input type="number" id="harga" v-model="form.harga" required
+                                    <input type="number" id="harga" v-model.number="form.harga" required min="0"
                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 
+                                <div>
+                                    <label for="harga_diskon" class="block text-sm font-medium text-gray-700 mb-1">
+                                        Harga Diskon (opsional)
+                                    </label>
+                                    <input type="number" id="harga_diskon" v-model.number="form.harga_diskon" min="0"
+                                           placeholder="Isi jika ingin menampilkan harga promo"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <p class="text-xs text-gray-500 mt-1">Kosongkan jika tidak ada promo. Harga lama akan dicoret di landing page.</p>
+                                </div>
+
                                 <div>
                                     <label for="periode" class="block text-sm font-medium text-gray-700 mb-1">
                                         Periode *

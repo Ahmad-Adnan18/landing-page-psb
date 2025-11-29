@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { 
     LayoutDashboard, 
     MessageCircle, 
@@ -64,6 +64,28 @@ const navigateTo = (hash, closeMenu = false) => {
         isMenuOpen.value = false;
     }
 };
+
+const formatCurrencyNumber = (value) => {
+    const numeric = Number(value ?? 0);
+    return new Intl.NumberFormat('id-ID').format(Number.isNaN(numeric) ? 0 : numeric);
+};
+
+const hasDiscount = (pkg) => Boolean(pkg?.has_discount && pkg?.harga_diskon);
+
+const pricingGridClass = computed(() => {
+    const count = props.packages?.length ?? 0;
+    const base = 'grid gap-8 w-full mx-auto items-center';
+
+    if (count <= 1) {
+        return `${base} max-w-xl grid-cols-1 justify-items-center`;
+    }
+
+    if (count === 2) {
+        return `${base} max-w-4xl grid-cols-1 sm:grid-cols-2 justify-center`;
+    }
+
+    return `${base} max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] justify-center`;
+});
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -154,7 +176,7 @@ onUnmounted(() => {
                             data-aos="fade-right"
                         >
                             <TextType 
-                                :text="['Digitalisasi Pesantren\nTanpa Ribet', 'Kelola Pesantren\nJadi Mudah', 'Hemat Waktu\nHingga 80%']"
+                                :text="['Digitalisasi Pesantren\nTanpa Ribet', 'Kelola Pendaftaran\nJadi Mudah', 'Hemat Waktu\nHingga 80%']"
                                 :typingSpeed="100"
                                 :deletingSpeed="50"
                                 :pauseDuration="2000"
@@ -321,7 +343,7 @@ onUnmounted(() => {
                     <div data-aos="fade-left">
                         <h3 class="text-3xl font-bold text-slate-900 mb-6">Solusi Digital Terpadu</h3>
                         <p class="text-slate-600 mb-6 leading-relaxed">
-                            Tidak perlu lagi pusing dengan tumpukan berkas formulir. Sistem kami mendigitalkan seluruh proses penerimaan santri baru mulai dari pendaftaran hingga daftar ulang.
+                            Tidak perlu lagi pusing dengan tumpukan berkas formulir. Sistem kami mendigitalkan seluruh proses penerimaan santri baru mulai dari pendaftaran hingga pendataan.
                         </p>
                         <ul class="space-y-4">
                             <li class="flex items-center gap-3">
@@ -352,7 +374,7 @@ onUnmounted(() => {
         </section>
 
         <!-- Pricing Section -->
-        <section id="pricing" class="py-20 bg-slate-50 relative overflow-hidden">
+        <section id="pricing" class="py-20 bg-slate-50 relative overflow-hidden items-center">
             <!-- Background Decoration -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-kun-primary/5 rounded-full blur-3xl"></div>
@@ -368,7 +390,7 @@ onUnmounted(() => {
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+                <div :class="pricingGridClass">
                     <div 
                         v-for="(pkg, index) in (packages || [])" 
                         :key="pkg.id"
@@ -392,12 +414,26 @@ onUnmounted(() => {
                             <div class="text-center mb-8">
                                 <h4 class="text-xl font-bold text-slate-900 mb-2">{{ pkg.nama_paket }}</h4>
                                 <p class="text-slate-500 text-sm mb-6">{{ pkg.deskripsi }}</p>
-                                
-                                <div class="flex items-baseline justify-center gap-1">
-                                    <span class="text-sm text-slate-500 font-medium">Rp</span>
-                                    <span class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-                                        {{ (pkg.formatted_harga || '').replace('Rp ', '').split('/')[0] }}
-                                    </span>
+                                <div class="space-y-3">
+                                    <div v-if="hasDiscount(pkg)" class="flex flex-col items-center gap-2">
+                                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-white bg-rose-500/90 px-3 py-1 rounded-full shadow-sm">
+                                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                                            Diskon Spesial
+                                        </span>
+                                        <span class="text-sm text-slate-400 line-through">{{ pkg.formatted_harga }}</span>
+                                        <div class="flex items-baseline justify-center gap-1">
+                                            <span class="text-sm text-slate-500 font-medium">Rp</span>
+                                            <span class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                                                {{ formatCurrencyNumber(pkg.harga_diskon) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div v-else class="flex items-baseline justify-center gap-1">
+                                        <span class="text-sm text-slate-500 font-medium">Rp</span>
+                                        <span class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                                            {{ formatCurrencyNumber(pkg.harga) }}
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="text-slate-500 text-sm mt-2 font-medium bg-slate-100 inline-block px-3 py-1 rounded-full">
                                     {{ pkg.periode }}

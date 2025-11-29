@@ -25,6 +25,25 @@ const formatPrice = (price) => {
     }).format(price)
 }
 
+const hasDiscount = (pkg) => {
+    if (pkg.harga_diskon === null || pkg.harga_diskon === undefined) {
+        return false
+    }
+
+    const hargaDiskon = Number(pkg.harga_diskon)
+    const hargaNormal = Number(pkg.harga)
+
+    if (Number.isNaN(hargaDiskon) || hargaDiskon <= 0) {
+        return false
+    }
+
+    if (!Number.isNaN(hargaNormal) && hargaNormal > 0) {
+        return hargaDiskon < hargaNormal
+    }
+
+    return true
+}
+
 const togglePackage = (pkg) => {
     if (confirm(`Apakah Anda yakin ingin ${pkg.is_aktif ? 'menonaktifkan' : 'mengaktifkan'} paket ${pkg.nama_paket}?`)) {
         router.patch(route('admin.pricing.toggle', pkg.id), {
@@ -86,8 +105,16 @@ const deletePackage = (pkg) => {
                                     </div>
                                 </div>
                                 
-                                <div class="mb-4">
-                                    <div class="text-2xl font-bold text-blue-600">{{ formatPrice(pkg.harga) }}</div>
+                                <div class="mb-4 space-y-1">
+                                    <div v-if="hasDiscount(pkg)" class="space-y-1">
+                                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-white bg-rose-500/90 px-2 py-0.5 rounded-full">
+                                            <TrendingUp class="w-3 h-3" />
+                                            Promo
+                                        </span>
+                                        <div class="text-sm text-gray-400 line-through">{{ formatPrice(pkg.harga) }}</div>
+                                        <div class="text-2xl font-bold text-blue-600">{{ formatPrice(pkg.harga_diskon) }}</div>
+                                    </div>
+                                    <div v-else class="text-2xl font-bold text-blue-600">{{ formatPrice(pkg.harga) }}</div>
                                     <div class="text-sm text-gray-500">{{ pkg.periode }}</div>
                                 </div>
                                 
