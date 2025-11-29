@@ -1,0 +1,58 @@
+﻿
+> build
+> vite build
+
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+node.exe : 
+At C:\Program Files\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:S 
+   tring) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandErro 
+   r
+ 
+/images/pattern-geometry.svg referenced in 
+/images/pattern-geometry.svg didn't resolve at 
+build time, it will remain unchanged to be 
+resolved at runtime
+[32mÔ£ô[39m 2445 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mpublic/build/[22m[32mmanifest.json                                    [39m[1m[2m 11.17 kB[22m[1m[22m[2m Ôöé gzip:  1.31 kB[22m
+[2mpublic/build/[22m[35massets/app-DoULurwo.css                          [39m[1m[2m 56.77 kB[22m[1m[22m[2m Ôöé gzip:  9.70 kB[22m
+[2mpublic/build/[22m[36massets/_plugin-vue_export-helper-DlAUqK2U.js     [39m[1m[2m  0.09 kB[22m[1m[22m[2m Ôöé gzip:  0.10 kB[22m
+[2mpublic/build/[22m[36massets/plus-Db-_c50B.js                          [39m[1m[2m  0.32 kB[22m[1m[22m[2m Ôöé gzip:  0.25 kB[22m
+[2mpublic/build/[22m[36massets/save-Ba4ks1eA.js                          [39m[1m[2m  0.50 kB[22m[1m[22m[2m Ôöé gzip:  0.33 kB[22m
+[2mpublic/build/[22m[36massets/PrimaryButton-euXbSQ82.js                 [39m[1m[2m  0.55 kB[22m[1m[22m[2m Ôöé gzip:  0.38 kB[22m
+[2mpublic/build/[22m[36massets/GuestLayout-DX5EDREe.js                   [39m[1m[2m  0.56 kB[22m[1m[22m[2m Ôöé gzip:  0.40 kB[22m
+[2mpublic/build/[22m[36massets/star-DLoPzF_-.js                          [39m[1m[2m  0.64 kB[22m[1m[22m[2m Ôöé gzip:  0.40 kB[22m
+[2mpublic/build/[22m[36massets/Dashboard-FxUMJd6r.js                     [39m[1m[2m  0.73 kB[22m[1m[22m[2m Ôöé gzip:  0.47 kB[22m
+[2mpublic/build/[22m[36massets/phone-DXlxjSIv.js                         [39m[1m[2m  0.83 kB[22m[1m[22m[2m Ôöé gzip:  0.43 kB[22m
+[2mpublic/build/[22m[36massets/TextInput-8yBu6R9_.js                     [39m[1m[2m  1.05 kB[22m[1m[22m[2m Ôöé gzip:  0.58 kB[22m
+[2mpublic/build/[22m[36massets/Edit-B_j922FZ.js                          [39m[1m[2m  1.23 kB[22m[1m[22m[2m Ôöé gzip:  0.67 kB[22m
+[2mpublic/build/[22m[36massets/ConfirmPassword-DJmrkLRG.js               [39m[1m[2m  1.34 kB[22m[1m[22m[2m Ôöé gzip:  0.77 kB[22m
+[2mpublic/build/[22m[36massets/trash-2-CCCeOVX7.js                       [39m[1m[2m  1.50 kB[22m[1m[22m[2m Ôöé gzip:  0.53 kB[22m
+[2mpublic/build/[22m[36massets/ForgotPassword-CPlp3L42.js                [39m[1m[2m  1.52 kB[22m[1m[22m[2m Ôöé gzip:  0.88 kB[22m
+[2mpublic/build/[22m[36massets/VerifyEmail-6QcYFV-E.js                   [39m[1m[2m  1.60 kB[22m[1m[22m[2m Ôöé gzip:  0.92 kB[22m
+[2mpublic/build/[22m[36massets/ResetPassword-Ds977cY-.js                 [39m[1m[2m  2.08 kB[22m[1m[22m[2m Ôöé gzip:  0.85 kB[22m
+[2mpublic/build/[22m[36massets/x-DQfZBAGT.js                             [39m[1m[2m  2.37 kB[22m[1m[22m[2m Ôöé gzip:  0.87 kB[22m
+[2mpublic/build/[22m[36massets/Register-BzU1XtS_.js                      [39m[1m[2m  2.55 kB[22m[1m[22m[2m Ôöé gzip:  0.98 kB[22m
+[2mpublic/build/[22m[36massets/UpdatePasswordForm-Bg3QCTf-.js            [39m[1m[2m  2.58 kB[22m[1m[22m[2m Ôöé gzip:  1.01 kB[22m
+[2mpublic/build/[22m[36massets/UpdateProfileInformationForm-BfSez-Zr.js  [39m[1m[2m  2.60 kB[22m[1m[22m[2m Ôöé gzip:  1.21 kB[22m
+[2mpublic/build/[22m[36massets/Login-D2ivMygb.js                         [39m[1m[2m  2.76 kB[22m[1m[22m[2m Ôöé gzip:  1.29 kB[22m
+[2mpublic/build/[22m[36massets/Index-CXWdfs97.js                         [39m[1m[2m  2.95 kB[22m[1m[22m[2m Ôöé gzip:  1.33 kB[22m
+[2mpublic/build/[22m[36massets/Index-BBkrVGSP.js                         [39m[1m[2m  3.10 kB[22m[1m[22m[2m Ôöé gzip:  1.39 kB[22m
+[2mpublic/build/[22m[36massets/Index-D6xxd19K.js                         [39m[1m[2m  3.14 kB[22m[1m[22m[2m Ôöé gzip:  1.31 kB[22m
+[2mpublic/build/[22m[36massets/ApplicationLogo-CfwVRZ6k.js               [39m[1m[2m  3.25 kB[22m[1m[22m[2m Ôöé gzip:  1.43 kB[22m
+[2mpublic/build/[22m[36massets/DeleteUserForm-COAe7gNP.js                [39m[1m[2m  5.13 kB[22m[1m[22m[2m Ôöé gzip:  2.11 kB[22m
+[2mpublic/build/[22m[36massets/Create-C4vQVmZY.js                        [39m[1m[2m  6.28 kB[22m[1m[22m[2m Ôöé gzip:  1.99 kB[22m
+[2mpublic/build/[22m[36massets/Index-D3-iXOlu.js                         [39m[1m[2m  6.62 kB[22m[1m[22m[2m Ôöé gzip:  1.86 kB[22m
+[2mpublic/build/[22m[36massets/Index-CBjnwxPP.js                         [39m[1m[2m  6.87 kB[22m[1m[22m[2m Ôöé gzip:  2.43 kB[22m
+[2mpublic/build/[22m[36massets/AuthenticatedLayout-BgCwx1iO.js           [39m[1m[2m  6.93 kB[22m[1m[22m[2m Ôöé gzip:  2.30 kB[22m
+[2mpublic/build/[22m[36massets/AuthenticatedLayout-QHD4KgPi.js           [39m[1m[2m  9.06 kB[22m[1m[22m[2m Ôöé gzip:  2.35 kB[22m
+[2mpublic/build/[22m[36massets/Welcome-B10xQazl.js                       [39m[1m[2m 18.77 kB[22m[1m[22m[2m Ôöé gzip:  6.19 kB[22m
+[2mpublic/build/[22m[36massets/Index-B9hbyun8.js                         [39m[1m[2m 27.28 kB[22m[1m[22m[2m Ôöé gzip:  6.93 kB[22m
+[2mpublic/build/[22m[36massets/app-FWL8Tf9v.js                           [39m[1m[2m249.93 kB[22m[1m[22m[2m Ôöé gzip: 89.32 kB[22m
+[32mÔ£ô built in 6.82s[39m

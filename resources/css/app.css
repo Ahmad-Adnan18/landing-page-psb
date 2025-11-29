@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-50 text-slate-800 antialiased;
+        font-family: theme('fontFamily.sans');
+    }
+
+    ::selection {
+        @apply bg-kun-maroon text-white;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-white/70 backdrop-blur border border-white/40 shadow-glow rounded-3xl;
+    }
+
+    .section-heading {
+        @apply text-3xl md:text-4xl font-bold text-slate-900;
+    }
+}
